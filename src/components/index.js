@@ -1,0 +1,6 @@
+export { default as Form }          from './Form'
+export { default as OptIn }         from './OptIn'
+export { default as Billing }       from './Billing'
+export { default as Shipping }      from './Shipping'
+export { default as FormInputs }    from './FormInputs'
+export { default as InputField }    from './form/InputField'

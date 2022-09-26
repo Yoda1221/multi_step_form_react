@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,400;0,600;1,200&display=swap');
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+* { margin: 0; padding: 0; font-family: "Nunito"; box-sizing: border-box; }
+a { text-decoration: none; color: #313131; }
+
+html, body {
+    height: 100%;
+    width:  100vw;
+    overflow-x: hidden;
+}
+body {
+    color: #494949 !important;
+    background: #D4ECDD !important;
+}
+li {
+    background: transparent !important;
+    border: none !important;
+}
