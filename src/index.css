@@ -17,3 +17,18 @@ li {
     background: transparent !important;
     border: none !important;
 }
+.progress {
+    font-size: 1.1rem;
+    background-color: #7ef5ac;
+    appearance: none;
+    -webkit-appearance: none;
+    height: 27px;
+    border-radius: 13.5px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.progress-bar {
+    font-weight: bold;
+    color: black !important;
+    border-radius: 13.5px !important;
+}

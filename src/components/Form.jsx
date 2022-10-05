@@ -1,4 +1,4 @@
-import { FormInputs } from '../components'
+import { FormInputs, ProgressLine } from '../components'
 import useFormContext from "../hooks/useFormContext"
 
 const Form = () => {
@@ -24,8 +24,9 @@ const Form = () => {
 
     return (
         <div className="container">
+            <ProgressLine />
             <form onSubmit={handleSubmit}>
-                <h2 className='mb-3'>{title[page]}</h2>
+                <h2 className='mb-3 mt-4 '>{title[page]}</h2>
                 <FormInputs />
                 <div className="d-grid gap-2 d-flex justify-content-between">
                     <button 
