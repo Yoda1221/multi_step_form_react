@@ -20,14 +20,17 @@ const initialState = {
     optInNews:      false
 }
 
+const title = {
+    0: 'Billing Info',
+    1: 'Shipping Info',
+    2: 'Opt-In'
+}
+
 export const FormProvider = ({ children }) => {
     const [page, setPage] = useState(0)
     const [data, setData] = useState(initialState)
-    const title = {
-        0: 'Billing Info',
-        1: 'Shipping Info',
-        2: 'Opt-In'
-    }
+    let canSubmit
+    const starter = { 0: 'bill', 1: 'ship'}
 
     useEffect(() => {
         if (data.sameAsBilling) {
@@ -62,23 +65,23 @@ export const FormProvider = ({ children }) => {
 
         setData(prevData => ({...prevData, [name]: value}))
     }
-    const {
-        billAddress2,
-        sameAsBilling,
-        shipAddress2,
-        optInNews,
-        ...requiredInputs } = data
-    const canSubmit     = [...Object.values(requiredInputs)].every(Boolean) && page === Object.keys(title).length - 1
-    const canNextPage1  = Object.keys(data)
-        .filter(key => key.startsWith('bill') && key !== 'billAddress2')
-        .map(key => data[key])
-        .every(Boolean)
-    const canNextPage2 = Object.keys(data)
-        .filter(key => key.startsWith('ship') && key !== 'shipAddress2')
+    if (page === Object.keys(title).length - 1) {
+        const {
+            billAddress2,
+            sameAsBilling,
+            shipAddress2,
+            optInNews,
+            ...requiredInputs } = data
+        canSubmit     = [...Object.values(requiredInputs)].every(Boolean)
+    }
+    const canNextPage  = Object.keys(data)
+        .filter(key => key.startsWith(starter[page]) && key !== `${starter[page]}Address2`)
         .map(key => data[key])
         .every(Boolean)
     const disablePrev   = page  === 0
-    const disableNext   = (page === Object.keys(title).length - 1) || (page === 0 && !canNextPage1) || (page === 1 && !canNextPage2)
+    const disableNext   = (page === Object.keys(title).length - 1) 
+    || (page === 0 && !canNextPage) 
+    || (page === 1 && !canNextPage)
     const prevHide      = page  === 0 && "d-none "
     const nextHide      = page  === Object.keys(title).length - 1 && "d-none "
     const submitHide    = page  !== Object.keys(title).length - 1 && "d-none "
